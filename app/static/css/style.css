@@ -1,0 +1,191 @@
+/* Setting Colors */
+/* Sizes */
+body,
+h1, h2, h3, h4, h5, h6,
+a,
+ul, li {
+  margin: 0;
+  padding: 0; }
+
+h1 {
+  color: #d1ad36;
+  font: normal 70px league-gothic, "Helvetica", "Arial", sans-serif;
+  text-transform: uppercase; }
+
+p {
+  font: 400 12px "Open Sans", "Helvetica", "Arial", sans-serif; }
+
+a,
+li {
+  list-style: none;
+  text-decoration: none; }
+
+.left-bar-nav,
+.content {
+  float: left;
+  height: 100%;
+  padding: 20px; }
+
+.left-bar-nav {
+  width: 130px; }
+
+.left-bar-nav-item {
+  width: 100%;
+  height: 130px;
+  text-align: center;
+  position: relative; }
+  .left-bar-nav-item a {
+    padding: 4%;
+    width: 92%;
+    height: 92%;
+    display: block;
+    color: #f9f9f9;
+    font: normal 25px league-gothic, "Helvetica", "Arial", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em; }
+
+#discover-nav-item {
+  background: #ffdd79; }
+
+#start-nav-item {
+  background: #68cbdf; }
+
+.content {
+  position: relative;
+  background: #ffdd79; }
+  .content header {
+    text-align: center;
+    margin-bottom: 20px; }
+
+.projects {
+  overflow: hidden;
+  margin: 0 auto; }
+  .projects:hover .project {
+    opacity: 0.7;
+    transition: opacity 0.5s ease-in; }
+    .projects:hover .project:hover {
+      opacity: 1.0;
+      transition: opacity 0.5s ease-in;
+      box-shadow: 1px 1px 4px 0px rgba(0, 0, 0, 0.3); }
+
+.project {
+  position: relative;
+  background: url("../img/dog.png");
+  background-size: auto 100%;
+  float: left;
+  width: 265px;
+  height: 200px;
+  margin-bottom: 20px;
+  margin-right: 20px; }
+  .project a {
+    width: 100%;
+    height: 100%;
+    display: block; }
+
+.project-info {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  width: 245px;
+  color: white; }
+  .project-info h2 {
+    font: normal 30px league-gothic, "Helvetica", "Arial", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.05em; }
+  .project-info h3 {
+    font: 400 12px "Open Sans", "Helvetica", "Arial", sans-serif; }
+  .project-info h4 {
+    text-align: right;
+    font: 400 10px "Open Sans", "Helvetica", "Arial", sans-serif; }
+
+#search {
+  -webkit-appearance: none;
+  padding: 10px;
+  width: 345px;
+  height: 25px;
+  border: 1px solid #eee; }
+  #search:focus {
+    border: 1px solid #68cbdf;
+    outline: none; }
+
+.search {
+  height: 40px; }
+  .search button {
+    padding: 7px 20px;
+    font: 400 13px "Open Sans", "Helvetica", "Arial", sans-serif;
+    background: #d1ad36;
+    border: none;
+    color: #ffdd79;
+    top: -8px;
+    position: relative; }
+    .search button:hover {
+      cursor: pointer;
+      box-shadow: 1px 1px 1px 0px #d1ad36; }
+
+.logo {
+  width: 309px;
+  height: 439px;
+  margin: 50px auto;
+  background: url(../img/logo.png);
+  margin-bottom: 15px; }
+
+.teal-background {
+  background: #68cbdf; }
+  .teal-background header h1 {
+    color: #447f8c; }
+
+h1.teal {
+  color: #68cbdf; }
+
+.gray-background {
+  background: #eee; }
+
+.signup {
+  margin: 0 auto;
+  width: 330px; }
+  .signup input {
+    -webkit-appearance: none;
+    border: 1px solid #eee;
+    width: 330px;
+    height: 35px;
+    padding: 5px 15px;
+    font: 400 12px "Open Sans", "Helvetica", "Arial", sans-serif; }
+    .signup input:focus {
+      border: 1px solid #68cbdf;
+      outline: none; }
+  .signup .submit {
+    margin-top: 5px;
+    float: right;
+    padding: 7px 20px;
+    font: 400 13px "Open Sans", "Helvetica", "Arial", sans-serif;
+    background: #ffdd79;
+    border: none;
+    color: #d1ad36; }
+    .signup .submit:hover {
+      cursor: pointer;
+      box-shadow: 1px 1px 1px 0px #d1ad36; }
+  .signup p {
+    text-align: center;
+    font-size: 20px;
+    color: #68cbdf; }
+
+.new-project {
+  color: #447f8c;
+  font: 700 17px "Open Sans", "Helvetica", "Arial", sans-serif; }
+  .new-project input {
+    -webkit-appearance: none;
+    border: 1px solid #eee;
+    padding: 5px 15px;
+    font: 400 12px "Open Sans", "Helvetica", "Arial", sans-serif; }
+  .new-project .submit {
+    margin-top: 5px;
+    padding: 7px 20px;
+    font: 400 13px "Open Sans", "Helvetica", "Arial", sans-serif;
+    background: #447f8c;
+    border: none;
+    color: #68cbdf; }
+    .new-project .submit:hover {
+      cursor: pointer;
+      box-shadow: 1px 1px 1px 0px #68cbdf; }
