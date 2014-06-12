@@ -1,4 +1,4 @@
-Ideas
+Luxwalk
 =====
 
-This is Ideas @ Berkeley. Coming soon to a town near you!
+information about luxwalk...
