@@ -108,12 +108,22 @@ def logout():
     return redirect('/')
 
 
-@app.route('/<regex("[A-Za-z0-9-_.]{4,20}"):uname>/')
+@app.route('/<regex("[A-Za-z0-9-_.]{4,20}"):uname>/', methods = ['GET', 'POST'])
 def user_page(uname):
+    form = LoginForm(request.form)
+    me = session.get("user_id")
     user = db.session.query(User).filter_by(user_name = uname)
     if user.first():
         user = user[0]
-        return render_template('user.html', user=user, logged_in=session.get('logged_in'), me=session.get('user_id'))
+        if request.method == "POST":
+            current = db.session.query(User).filter_by(id = me)
+            if current.first():
+                current = current[0]
+                current.request(user)
+                flash("requested user!!!")
+            else:
+                flash("shit don gon fuckkked")
+        return render_template('user.html', user=user, form = form, logged_in=session.get('logged_in'), me = me)
     else:
         return render_template('error.html'), 404
 
@@ -132,8 +142,6 @@ class RegistrationForm(Form):
     ])
     confirm = PasswordField('Repeat Password')
     accept_tos = BooleanField('I accept the TOS', [validators.Required()])
-
-
 
 
 
