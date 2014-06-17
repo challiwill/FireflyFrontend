@@ -1,4 +1,5 @@
 *pyc
 venv
 venv/*
-app.dp
+app.db
+db_repository/*
