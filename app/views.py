@@ -119,8 +119,13 @@ def user_page(uname):
             current = db.session.query(User).filter_by(id = me)
             if current.first():
                 current = current[0]
-                current.request(user)
-                flash("requested user!!!")
+                current = current.request(user)
+                if current:
+                    db.session.add(current)
+                    db.session.commit()
+                    flash("requested user!!!")
+                else:
+                    flash("request is already pending")
             else:
                 flash("shit don gon fuckkked")
         return render_template('user.html', user=user, form = form, logged_in=session.get('logged_in'), me = me)

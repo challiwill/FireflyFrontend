@@ -24,9 +24,12 @@ class User(db.Model):
 
     
     def request(self, user):
-        if not self.is_requesting(user):
+        if not self.request_pending(user):
             self.requested.append(user)
             return self
+
+    def request_pending(self, user):
+        return self.is_requesting(user) or user.is_requesting(self)
 
     def is_requesting(self, user):
         return self.requested.filter(requests.c.requested_id == user.id).count() > 0
