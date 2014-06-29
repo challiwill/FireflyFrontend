@@ -1,5 +1,6 @@
-from app import app, db
-from flask import render_template, request, url_for, flash, redirect, session
+from app import app, db, lm, oid
+from flask import render_template, request, url_for, flash, redirect, session, g
+from flask.ext.login import login_user, current_user, login_required
 from app.models import User, YES, NO
 from wtforms import Form, BooleanField, FileField, TextField, TextAreaField, PasswordField, validators, SelectField
 from hashlib import md5
@@ -54,6 +55,16 @@ def edit_profile():
     else:
         return redirect(url('login'))
 
+@app.route('/home/requests', methods = ['GET', 'POST'])
+@login_required
+def requests():
+    return render_template('requests.html', all_reqs = g.user.requested)
+
+
+@app.before_request
+def before_request():
+    g.user = current_user
+
 
 @app.route('/create/', methods=['POST', 'GET'])
 def create():
@@ -77,6 +88,7 @@ def create():
 
 
 @app.route('/login/', methods=['POST', 'GET'])
+@oid.loginhandler
 def login():
     form = LoginForm(request.form)
 
@@ -100,6 +112,11 @@ def login():
             flash("Incorrect username and password")
     return render_template('login.html', form=form, logged_in=session.get('logged_in'))
 
+
+@lm.user_loader
+def load_user(id):
+    return User.query.get(int(id))
+
 @app.route('/logout/')
 def logout():
     session['logged_in'] = False
@@ -108,19 +125,38 @@ def logout():
     return redirect('/')
 
 
-@app.route('/<regex("[A-Za-z0-9-_.]{4,20}"):uname>/')
+@app.route('/<regex("[A-Za-z0-9-_.]{4,20}"):uname>/', methods = ['GET', 'POST'])
 def user_page(uname):
+    form = LoginForm(request.form)
+    me = session.get("user_id")
     user = db.session.query(User).filter_by(user_name = uname)
     if user.first():
         user = user[0]
-        return render_template('user.html', user=user, logged_in=session.get('logged_in'), me=session.get('user_id'))
+        if request.method == "POST":
+            current = db.session.query(User).filter_by(id = me)
+            if current.first():
+                current = current[0]
+                current = current.request(user)
+                if current:
+                    db.session.add(current)
+                    db.session.commit()
+                    flash("requested user!!!")
+                else:
+                    flash("request is already pending")
+            else:
+                flash("shit don gon fuckkked")
+        return render_template('user.html', user=user, form = form, logged_in=session.get('logged_in'), me = me)
     else:
         return render_template('error.html'), 404
 
 
 @app.route('/<regex(".+"):url>')
-def error():
+def error(url):
     return render_template('error.html')
+
+@lm.unauthorized_handler
+def unauthorized():
+    return redirect('login')
 
 class RegistrationForm(Form):
     name = TextField('Name', [validators.Length(min=4, max=25)])
@@ -132,8 +168,6 @@ class RegistrationForm(Form):
     ])
     confirm = PasswordField('Repeat Password')
     accept_tos = BooleanField('I accept the TOS', [validators.Required()])
-
-
 
 
 

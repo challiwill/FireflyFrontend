@@ -5,7 +5,7 @@ def print_all_users():
     users = User.query.all()
     for u in users:
         if u:
-            print u.id, u.name, u.email, u.user_name, u.password
+            print u.id, u.name, u.email, u.user_name, u.password, u.requested.count()
 
 
 

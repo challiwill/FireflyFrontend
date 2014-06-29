@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+  da request page:
+  {{all_reqs.count()}}
+  <br>
+
+  {% for req in all_reqs %}
+      {{req.user_name}}
+      <form method=post action="/{{req.user_name}}/reqresp">
+        <p><input type=submit value=Accept>
+      </form>
+      <form method=post action="/{{req.user_name}}/reqresp">
+        <p><input type=submit value=Deny>
+      </form>
+  {% endfor %}
+{% endblock %}
