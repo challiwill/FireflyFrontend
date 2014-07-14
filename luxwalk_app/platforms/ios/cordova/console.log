@@ -1,0 +1,11 @@
+2014-07-14 00:36:19.518 LuxWalk[4979:70b] Multi-tasking -> Device: YES, App: YES
+2014-07-14 00:36:19.555 LuxWalk[4979:70b] Unlimited access to network resources
+2014-07-14 00:36:19.564 LuxWalk[4979:70b] 
+
+Started backup to iCloud! Please be careful.
+Your application might rejected by Apple if you store too much data.
+For more information please read "iOS Data Storage Guidelines"
+You could find it at the following address https://developer.apple.com/icloud/documentation/data-storage/ .
+
+2014-07-14 00:36:20.117 LuxWalk[4979:70b] Resetting plugins due to page load.
+2014-07-14 00:36:20.216 LuxWalk[4979:70b] Finished load of: file:///Users/corbin/Library/Application%20Support/iPhone%20Simulator/7.1/Applications/70D2A7CF-BE0A-44B1-962B-8910B76E48CE/LuxWalk.app/www/index.html
