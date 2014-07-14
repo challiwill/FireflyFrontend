@@ -4,3 +4,4 @@ venv/*
 app.db
 db_repository/*
 *~
+.DS_Store
