@@ -3,3 +3,4 @@ venv
 venv/*
 app.db
 db_repository/*
+*~
