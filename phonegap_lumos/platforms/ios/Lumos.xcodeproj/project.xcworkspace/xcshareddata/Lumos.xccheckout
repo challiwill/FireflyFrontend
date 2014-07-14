@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>0962EE83-3E4C-4538-884B-F3EF01E9EDC3</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Lumos</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>BC696B55-D778-42EB-891E-34940B9EF5B5</key>
+		<string>ssh://github.com/challiwill/LuxWalk.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>phonegap_lumos/platforms/ios/Lumos.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>BC696B55-D778-42EB-891E-34940B9EF5B5</key>
+		<string>../../../../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/challiwill/LuxWalk.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>BC696B55-D778-42EB-891E-34940B9EF5B5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>BC696B55-D778-42EB-891E-34940B9EF5B5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>LuxWalk</string>
+		</dict>
+	</array>
+</dict>
+</plist>
