@@ -1,0 +1,4 @@
+meteor
+node.js
+mongodb
+# ios and/or android emulator
