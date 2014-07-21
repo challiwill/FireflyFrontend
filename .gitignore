@@ -3,6 +3,12 @@ venv
 venv/*
 app.db
 db_repository/*
+
+# Emacs
 *~
+
+# IOS / Xcode
+*.xcworkspace
+
+# OSX
 .DS_Store
-leaderbaord
