@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map-canvas { height: 100% }
+    </style>
+
+    <!-- this script loads gmaps API; can change when we get dev API (using Brian's personal one right now) -->
+    <script type="text/javascript" 
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDDmOJOaW_XRly-okUJ4dLi2A-YzatZkxY">
+    </script>
+
+    <!-- load google visualization api -->
+    <script type="text/javascript"
+      src="http://maps.googleapis.com/maps/api/js?libraries=visualization&sensor=true_or_false">
+    </script>
+
+    <!-- render map here -->
+    <script type="text/javascript" 
+      src="render-map.js">
+    </script>
+
+  </head>
+  <body>
+    <div id="map-canvas"/>
+  </body>
+</html>
