@@ -1,18 +1,18 @@
-/* CSS declarations go here */
-body {
-    margin: 0;
-    height: 100%;
-    background-color: rgba(15,77,146,0.5);
-    background-image: url(images/temp_logo.png);
-    background-size: 90%;
-    background-repeat: no-repeat;
+/* /\* CSS declarations go here *\/ */
+/* body { */
+/*     margin: 0; */
+/*     height: 100%; */
+/*     background-color: rgba(15,77,146,0.5); */
+/*     background-image: url(images/temp_logo.png); */
+/*     background-size: 90%; */
+/*     background-repeat: no-repeat; */
 
-}
-.landing #mc_embed_signup {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 300px;
-    font: 14px Helvetica,Arial,sans-serif;
-    color: #FFF;
-    width: 500px;
-}
+/* } */
+/* .landing #mc_embed_signup { */
+/*     margin-left: auto; */
+/*     margin-right: auto; */
+/*     margin-top: 300px; */
+/*     font: 14px Helvetica,Arial,sans-serif; */
+/*     color: #FFF; */
+/*     width: 500px; */
+/* } */
