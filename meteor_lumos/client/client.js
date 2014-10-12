@@ -1,4 +1,8 @@
 if (Meteor.isClient) {
+  function submit(submit_name) {
+    Users.insert({name: submit_name});
+  }
+
   Template.hello.greeting = function () {
     return "Welcome to meteor_lumos.";
   };
