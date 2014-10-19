@@ -1,4 +1,4 @@
-.grid-block, .main, .user, .comments li, .comment-form { background: #fff;
+.grid-block, .main, .friend, .comments li, .comment-form { background: #fff;
 border-radius: 3px;
 padding: 10px;
 margin-bottom: 10px;
@@ -8,26 +8,26 @@ background: #eee; color: #666666;
 }
 .navbar { margin-bottom: 10px } .navbar .navbar-inner {
 border-radius: 0px 0px 3px 3px; }
-#spinner { height: 300px } .user {
+#spinner { height: 300px } .friend {
 *zoom: 1;
 -webkit-transition: all 300ms 0ms; -webkit-transition-delay: ease-in; -moz-transition: all 300ms 0ms ease-in; -o-transition: all 300ms 0ms ease-in; transition: all 300ms 0ms ease-in; position: relative;
 opacity: 1;
 }
-.user:before, .user:after {
+.friend:before, .friend:after {
 content: "";
 display: table; }
-.user:after { clear: both } .user.invisible { opacity: 0 } .user .upvote {
+.friend:after { clear: both } .friend.invisible { opacity: 0 } .friend .upvote {
 display: block; margin: 7px 12px 0 0; float: left;
 }
-.user .user-content { float: left } .user .user-content h3 {
+.friend .friend-content { float: left } .friend .friend-content h3 {
 margin: 0; line-height: 1.4; font-size: 18px;
 }
-.user .user-content h3 a { display: inline-block; margin-right: 5px;
+.friend .friend-content h3 a { display: inline-block; margin-right: 5px;
 }
-.user .user-content h3 span {
+.friend .friend-content h3 span {
 font-weight: normal; font-size: 14px; display: inline-block; color: #aaaaaa;
 }
-.user .user-content p { margin: 0 } .user .discuss {
+.friend .friend-content p { margin: 0 } .friend .discuss {
 display: block; float: right; margin-top: 7px;
 }
 .comments {

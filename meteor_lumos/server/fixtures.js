@@ -1,8 +1,8 @@
-if (Users.find().count() == 0) {
-    Users.insert({
+if (Friends.find().count() == 0) {
+    Friends.insert({
 	name: 'Corbin Halliwill',
 	uid: 1});
-    Users.insert({
+    Friends.insert({
 	name: 'Justin Halliwill',
 	uid: 0});
 }

@@ -6,5 +6,8 @@
 standard-app-packages
 insecure
 iron:router
-spin
+bootstrap
+sacha:spin
+mrt:accounts-ui-bootstrap-dropdown
+accounts-password
 

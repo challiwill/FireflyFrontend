@@ -1,8 +1,8 @@
-Meteor.publish('users', function() { 
-    return Users.find();
+Meteor.publish('friends', function() { 
+    return Friends.find();
 });
 
-// Something like this but for friends, users, etc
+// Something like this but for friends, friends, etc
 // Meteor.publish('posts', function(author) {
 // return Posts.find({'flagged': false, 'author': author});
 // });
