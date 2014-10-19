@@ -1,5 +1,3 @@
-Meteor.subscribe('users');
-
 // something like
 // Meteor.subscribe('friends', 'justin halliwill');
 // or more likeley
