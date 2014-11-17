@@ -2,6 +2,10 @@ Meteor.publish('friends', function() {
     return Friends.find();
 });
 
+Meteor.publish('users', function() {
+    return Users.find()
+});
+
 // Something like this but for friends, friends, etc
 // Meteor.publish('posts', function(author) {
 // return Posts.find({'flagged': false, 'author': author});
