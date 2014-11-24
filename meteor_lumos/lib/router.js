@@ -14,7 +14,7 @@ Router.map(function() {
 
     this.route('userPage', {
 	path: '/user/:_id',
-	data: function() { return Users.findOne(this.params._id); }
+	data: function() { return Meteor.users.findOne(this.params._id); }
     });
 
     this.route('postEdit', {
