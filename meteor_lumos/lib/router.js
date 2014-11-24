@@ -7,15 +7,15 @@ Router.configure({
 });
 
 Router.map(function() {
-    // this.route('/', function () {
-    // 	this.render('Home');
-    // });
+    this.route('/', function () {
+    	this.render('Home');
+    });
 
-    this.route('friendsList', {path: '/'});
+    this.route('friendsList');
 
     this.route('friendPage', {
-	path: '/friends/:_id',
-	data: function() { return Friends.findOne(this.params._id); }
+    	path: '/friends/:_id',
+    	data: function() { return Friends.findOne(this.params._id); }
     });
 
     this.route('userPage', {
