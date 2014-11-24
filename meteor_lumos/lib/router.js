@@ -37,4 +37,7 @@ var requireLogin = function(pause) {
     }
 }
 
+
 Router.onBeforeAction('loading');
+Router.onBeforeAction(function () {this.next(); requireLogin;}, {only: 'userPage'});
+//Router.onBeforeAction(requireLogin, {only: 'postSubmit'});
