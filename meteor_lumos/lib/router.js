@@ -1,10 +1,16 @@
 Router.configure({
     layoutTemplate: 'layout',
     loadingTemplate: 'loading',
-    waitOn: function() { return Meteor.subscribe('friends');}
+    waitOn: function() { 
+	return [Meteor.subscribe('friends')] 
+    }
 });
 
 Router.map(function() {
+    // this.route('/', function () {
+    // 	this.render('Home');
+    // });
+
     this.route('friendsList', {path: '/'});
 
     this.route('friendPage', {
@@ -25,19 +31,14 @@ Router.map(function() {
     this.route('postSubmit', { 
 	path: '/submit'
     });
+
 });
 
-var requireLogin = function(pause) { 
-    if (! Meteor.user()) {
-	if (Meteor.loggingIn()) 
-	    this.render('loading')
-	else 
-	    this.render('accessDenied');
-	pause(); 
-    }
+var requireLogin = function() { 
+    if (! Meteor.user())
+	this.render('accessDenied');
+    else 
+	this.next();
 }
 
-
-Router.onBeforeAction('loading');
-Router.onBeforeAction(function () {this.next(); requireLogin;}, {only: 'userPage'});
-//Router.onBeforeAction(requireLogin, {only: 'postSubmit'});
+Router.onBeforeAction(requireLogin, {only: 'userPage'});
