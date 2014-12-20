@@ -7,11 +7,13 @@ Router.configure({
 });
 
 Router.map(function() {
-    this.route('/', function () {
-    	this.render('Home');
+    // this.route('/', function () {
+    // 	this.render('Home');
+    // });
+    this.route('Home', {
+	path: '/'
     });
-
-    this.route('friendsList');
+    // this.route('friendsList');
 
     this.route('friendPage', {
     	path: '/friends/:_id',
