@@ -7,22 +7,18 @@ Router.configure({
 });
 
 Router.map(function() {
-    // this.route('/', function () {
-    // 	this.render('Home');
-    // });
+
     this.route('Home', {
 	path: '/'
     });
-    // this.route('friendsList');
 
     this.route('friendPage', {
     	path: '/friends/:_id',
     	data: function() { return Friends.findOne(this.params._id); }
     });
 
-    this.route('userPage', {
-	path: '/user/:_id',
-	data: function() { return Meteor.users.findOne(this.params._id); }
+    this.route('profile', {
+	path: '/profile'
     });
 
     this.route('postEdit', {
@@ -43,4 +39,4 @@ var requireLogin = function() {
 	this.next();
 }
 
-Router.onBeforeAction(requireLogin, {only: 'userPage'});
+Router.onBeforeAction(requireLogin, {except: 'Home'});
