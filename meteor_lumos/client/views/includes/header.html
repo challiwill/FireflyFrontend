@@ -7,7 +7,9 @@
         <span class="icon-bar"></span>
       </a>
       <a class="brand" href="{{pathFor 'Home'}}">Firefly</a>
-      <a class="brand" href="{{pathFor 'profile'}}">Profile</a>
+      {{#if loggedIn}}
+          <a class="brand" href="{{pathFor 'profile'}}">Profile</a>
+      {{/if}}
       <div class="nav-collapse collapse">
         <ul class="nav pull-right">
           <li>{{> loginButtons}}</li>
