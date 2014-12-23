@@ -13,21 +13,12 @@ Router.map(function() {
     });
 
     this.route('friendPage', {
-    	path: '/friends/:_id',
+    	path: '/users/:_id',
     	data: function() { return Friends.findOne(this.params._id); }
     });
 
     this.route('profile', {
 	path: '/profile'
-    });
-
-    this.route('postEdit', {
-	path: '/posts/:_id/edit',
-	data: function() { return Posts.findOne(this.params._id); }
-    });
-
-    this.route('postSubmit', { 
-	path: '/submit'
     });
 
 });
