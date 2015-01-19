@@ -1,7 +1,9 @@
+// Manager for friend item
 Template.friendItem.helpers({ 
-    domain: function() {
-	var a = document.createElement('a');
-	a.href = this.url;
-	return a.hostname;
+    email: function() {
+	return this.emails[0].address;
+    },
+    name: function() {
+	return this._id;
     }
 });

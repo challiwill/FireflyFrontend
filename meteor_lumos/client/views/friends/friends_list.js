@@ -1,7 +1,6 @@
-// Manager for Friends
-
-Template.friendsList.helpers({ 
+// Manager for friends list
+Template.friendsList.helpers({
     friends: function() {
-	return Friends.find(); 
+	return Meteor.users.find();
     }
 });

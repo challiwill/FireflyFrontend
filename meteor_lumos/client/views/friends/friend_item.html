@@ -1,7 +1,9 @@
 <template name="friendItem">
   <div class="friend">
+
     <div class="friend-content">
-      <h3><a href="{{url}}">{{name}}</a><span>uid: {{uid}}</span></h3>
+      <!-- url doesn't work.. something with helper? -->
+      <h3><a href="{{pathFor 'friendPage'}}">{{name}}</a><span>{{email}}</span></h3>
     </div>
     <a href="{{pathFor 'friendPage'}}" class="discuss btn">Profile</a>
   </div>
