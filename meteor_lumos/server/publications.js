@@ -7,6 +7,10 @@ Meteor.publish("userData", function () {
 			     {fields: {'friends': true, 'profile': true}});
 });
 
+Meteor.publish('crimes', function() {
+    return Crimes.find();
+});
+
 // TODO we will generate accounts for everyone automatically
 // TODO if no friends add all with same groupid
 // TODO onlyu publish if friendship is mutual
