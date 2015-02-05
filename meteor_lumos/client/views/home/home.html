@@ -1,14 +1,9 @@
 <template name="home">
-Welcome to Firefly, the new safety app for University of California, Berkeley. 
-  {{> map}}
-   
 
-  {{#each crime}}
-  	<p>{{description}}</p>
-  	<p>{{address}}</p>
-  	<p>{{agency}}</p>
-        <p>{{lat}}</p>
-        <p>{{long}}</p>
-  {{/each}}
+  <p align="center">Welcome to Firefly, the new safety app for University of California, Berkeley.</p>
+  {{> map}}
+  <br>
+  <!-- TODO make footer -->
+  <!-- {{> footer}} -->
 
 </template>
