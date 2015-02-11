@@ -5,5 +5,5 @@ Template.friendItem.helpers({
     },
     name: function() {
 	return this._id;
-    }
+    },
 });
