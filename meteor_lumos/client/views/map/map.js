@@ -7,7 +7,7 @@ var user_point = new Array();
 
 Meteor.subscribe('crimes', function() {
     Crimes.find().forEach(function(crime) {
-        crime_points.push(new google.maps.LatLng(crime.lat, crime.long));
+        crime_points.push(new google.maps.LatLng(crime.lat, crime.lng));
     })
 });
 

@@ -65,7 +65,7 @@ if (Crimes.find().count() == 0) {
 		    	}
 		 	else {
 		 	    incident['lat'] = data.results[0].geometry.location.lat;
-		 	    incident['long'] = data.results[0].geometry.location.lng;
+		 	    incident['lng'] = data.results[0].geometry.location.lng;
 			    counter = counter + 1;
 			    Crimes.insert(incident);
 			    
