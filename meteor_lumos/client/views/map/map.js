@@ -5,15 +5,6 @@ var crime_points = new Array();
 var friend_points = new Array();
 var user_point = new Array();
 
-
-function test(x) {
-    var min = 37.8565551;
-    var max = 37.880698;
-    var interval = (max - min)/dim;
-    var no = (x - min)/interval;
-    return parseInt(no);
-}
-
 Meteor.subscribe('crimes', function() {
     Crimes.find().forEach(function(crime) {
         crime_points.push(new google.maps.LatLng(crime.lat, crime.long));

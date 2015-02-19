@@ -1,4 +1,5 @@
 var Cheerio = Npm.require('cheerio');
+
 // TODO use OSM nominatim http://wiki.openstreetmap.org/wiki/Nominatim
 //      or other geocoding API service
 // TODO cache result effectively
@@ -40,7 +41,8 @@ if (Crimes.find().count() == 0) {
     order = ['description','case','address','agency','date'];
 
     for (crime in crime_types) {
-	var url = 'http://www.crimemapping.com/DetailedReport.aspx?db='+bmonth+'/'+bday+'/'+byear+'+00:00:00&de='+emonth+'/'+eday+'/'+
+	var url = 'http://www.crimemapping.com/DetailedReport.aspx?db='+
+	    bmonth+'/'+bday+'/'+byear+'+00:00:00&de='+emonth+'/'+eday+'/'+
 	    eyear+'+23:59:00&ccs='+crime_types[crime]+'&xmin='+xmin+'&ymin='+
 	    ymin+'&xmax='+xmax+'&ymax='+ymax;
 	
@@ -56,20 +58,15 @@ if (Crimes.find().count() == 0) {
 
 	    	});
 
-	    	// console.log('incident');
-
 	    	if(incident['address'] != '-') {
 		    gm.geocode(incident['address'] + 'Berkeley CA', Meteor.bindEnvironment(function(err, data){
 		    	if(err) {
 		    	    console.log(err);
 		    	}
 		 	else {
-			    // console.log(incident);
-			    // console.log(data);
 		 	    incident['lat'] = data.results[0].geometry.location.lat;
 		 	    incident['long'] = data.results[0].geometry.location.lng;
 			    counter = counter + 1;
-			    // console.log('Counter is ' + counter);
 			    Crimes.insert(incident);
 			    
 			}
@@ -80,10 +77,3 @@ if (Crimes.find().count() == 0) {
 
     }
 }
-
-// TODO friends should be a embedded sub-document of users.profile
-// TODO make sure that friends can be added (manually? or by group id somehow?)
-// TODO make sure that this does not add self as friend (verify on email)
-
-// db.users.findOne({friends:{"$exists":true}})
-// db.users.update({_id:"6ox2osiG4dcjirPbW"},{$set : {"groupid":"testgroup1"}})
