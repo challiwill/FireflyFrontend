@@ -2,7 +2,7 @@ Meteor.publish('friends', function() {
     return Meteor.users.find({friends: {$in: [this.userId]}});
 });
 
-Meteor.publish("userData", function () {
+Meteor.publish('userData', function () {
     return Meteor.users.find({_id: this.userId},
 			     {fields: {'friends': true, 'profile': true}});
 });
