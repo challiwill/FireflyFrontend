@@ -3,8 +3,6 @@ var Cheerio = Npm.require('cheerio');
 // TODO use OSM nominatim http://wiki.openstreetmap.org/wiki/Nominatim
 //      or other geocoding API service
 // TODO cache result effectively
-var gm = Npm.require('googlemaps');
-
 if (Crimes.find().count() == 0) {
 
     bmonth = '05';
