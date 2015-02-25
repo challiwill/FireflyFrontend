@@ -1,10 +1,12 @@
 var Cheerio = Npm.require('cheerio');
 
-// TODO use OSM nominatim http://wiki.openstreetmap.org/wiki/Nominatim
-//      or other geocoding API service
-// TODO cache result effectively
+var city = "BERKELEY";
+var state = "CA";
+
 if (Crimes.find().count() == 0) {
 
+    // TODO loop over one week at a time to get full data
+    console.log("[+] Loading crime data for " + city + ', ' + state + "...");
     bmonth = '05';
     bday = '30';
     byear = '2014';
@@ -16,25 +18,16 @@ if (Crimes.find().count() == 0) {
     xmax = '-13603260.046893662';
     ymax = '4563184.9737941185';
 
-    crime_types = {
-	// 'arson' : 'AR',
+    var crime_types = {
 	'assault' : 'AS',
-	// 'burglary' : 'BU',
 	'disturbing the peace' : 'DP',
-	// 'drugs/alcohol violations' : 'DR',
-	// 'dui' : 'DU',
-	// 'fraud' : 'FR',
 	'homicide' : 'HO',
-	// 'motor vehicle theft' : 'VT',
 	'robbery' : 'RO',
-	// 'sec crimes' : 'SX',
 	'theft/larceny' : 'TH',
-	// 'vandalism' : 'VA',
-	// 'vehicle break-in/theft' : 'VB',
 	'weapons' : 'WE'
     };
 
-    order = ['description','case','address','agency','date'];
+
 
     for (crime in crime_types) {
 	// BPD and UCPD share a crime report page
@@ -49,40 +42,72 @@ if (Crimes.find().count() == 0) {
     	$('.report tr').each(function(i) {
     	    if(i > 1){
 	 	var incident = {'crimetype': crime_types[crime]};
+		var order = ['description','case','address','agency','date'];
 	    	$(this).find('td span').each(function(i) {
-		    var field = order[i];
-		    incident[field] = $(this).text().trim();
-
+		    incident[order[i]] = $(this).text().trim();
 	    	});
 
-	    	if(incident['address'] != '-' && 
-		   incident['address'].indexOf('/') > -1) {
-		    // TODO geocode street intersections [remove indexOf check]
-		    // TODO geocode campus buildings
-		    // TODO filter campus buildings
-		    pos = geocode(incident['address'] + ' Berkeley CA');
-		    if(pos){
+	    	if(incident['address'] != '-') {
+		    if(incident['address'].indexOf('/') > -1) {
+			// TODO geocode street intersections [remove indexOf check]
+			// pos = geocodeIntersection(incident['address']);
+			pos = null;
+		    } else if(incident['address'].indexOf("BLOCK") > -1) {
+			pos = geocodeAddress(incident['address']);
+    		    } else {
+			// TODO filter campus buildings
+			// TODO geocode campus buildings
+			pos = null;
+		    }
+		    if(pos && pos.lat && pos.lng){
+			console.log("[+] " + incident['address']);
+			console.log("[-] " + pos.lat + ', ' + pos.lng);
 			incident['lat'] = pos.lat;
 			incident['lng'] = pos.lng;
+			Crimes.insert(incident);
 		    } else {
-			// TODO impossible values, make sure these are sorted out later
-			incident['lat'] = 100; // goes from 90 to -90
-			incident['lng'] = 200; // goes from 180 to -180
+			console.log("[0] " + incident['address']);
 		    }
-		    Crimes.insert(incident);
     		}
-    	    }
-    	});
-
+	    }
+	});
     }
 }
 
-function geocode(address) {
+function geocodeAddress(address) {
+    // format street name and number
+    address = address.split("BLOCK");
+    address[1] = address[1].split(' ');
+    address[1].splice(address[1].indexOf(''),1)
+    address[1].splice(address[1].length-1,1);
+    address[1] = address[1].join(' ');
+    if (address[1] == "MARTIN LUTHER KING")
+	address[1] = "M L KING";
+    var num = parseInt(address[0]);
+
+    match = Addresses.findOne({streetNum: {$gte: num, $lt: num + 100},
+			    streetName: address[1], 
+			    city: city, 
+			    state: state},
+			   {_id: 0,
+			    lat: 1,
+			    lng: 1});
+    if(match && match.lat && match.lng){
+	return {'lat': match.lat, 'lng': match.lng};
+    } else {
+	return null;
+    }
+}
+
+
+function geocodeIntersection(address) {
     address = address.split(" ");
-    match = Addresses.find({streetNum: parseInt(address[0]), 
-			   streetName: address[2], 
-			   city: address[4], 
-			  state: address[5]});
+    // TODO figure out which street comes first alphabetically
+    var sn1 = 0, sn2 = 3;
+    match = Intersections.find({streetName1: address[sn1], 
+				streetName2: address[sn2], 
+				city: address[5], 
+				state: address[6]});
     if(match){
 	return {'lat': match.lat, 'lng': match.lng};
     } else {

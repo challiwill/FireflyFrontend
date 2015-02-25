@@ -1,37 +1,32 @@
-var dim = 4;
-var zones = new Array(dim);
-zones[1] = 0;
-var crime_points = new Array();
-var friend_points = new Array();
-var user_point = new Array();
-
-Meteor.subscribe('crimes', function() {
-    Crimes.find().forEach(function(crime) {
-        crime_points.push(new google.maps.LatLng(crime.lat, crime.lng));
-    })
-});
-
-Template.body.helpers({
-    crime: function () {
-      	return Crimes.find({});
-    }
-});
-
 Template.map.rendered = function () {
-    var mapOptions = {
-        zoom: 14,
-    };
-    
-    gmap = new google.maps.Map(document.getElementById("map"), mapOptions); 
-    gmap.setCenter(new google.maps.LatLng(37.869929, -122.265146));
+    if (! Session.get('map'))
+    	gmaps.initialize();
 
-    heatmap = new google.maps.visualization.HeatmapLayer({
-        data: crime_points,
-        radius: 30,
-        map: gmap
+    Deps.autorun(function() {
+        console.log("[+] Intializing Heatmap...");
+	var crimeMap = new Array();
+
+	Crimes.find().forEach(function(incident) {
+            crimeMap.push(new google.maps.LatLng(incident.lat, incident.lng));
+	});
+
+	heatmap = new google.maps.visualization.HeatmapLayer({
+            data: crimeMap,
+	    radius: 30,
+	    dissipating: true,
+	    opacity: 0.75,
+	    // TODO come up with better gradient
+	    gradient: [ 'rgba(255, 200, 0, 0)',
+			'rgba(255, 100, 0, 1)',
+			'rgba(255, 75, 0, 1)',
+			'rgba(255, 50, 0, 1)',
+			'rgba(255, 25, 0, 1)',
+			'rgba(255, 0, 0, 1)'
+		      ]
+	});
+
+	heatmap.setMap(gmaps.map);
     });
-
-    heatmap.setMap(gmap);
 
 };
 
