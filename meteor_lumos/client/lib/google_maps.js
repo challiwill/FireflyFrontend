@@ -65,3 +65,7 @@ gmaps = {
         Session.set('map', true);
     }
 }
+
+Template.map.destroyed = function() {
+    Session.set('map', false);
+}
