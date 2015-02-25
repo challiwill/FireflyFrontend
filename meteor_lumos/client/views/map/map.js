@@ -16,11 +16,16 @@ Template.map.rendered = function () {
 	    dissipating: true,
 	    opacity: 0.75,
 	    // TODO come up with better gradient
-	    gradient: [ 'rgba(255, 200, 0, 0)',
-			'rgba(255, 100, 0, 1)',
-			'rgba(255, 75, 0, 1)',
-			'rgba(255, 50, 0, 1)',
-			'rgba(255, 25, 0, 1)',
+	    gradient: [ 'rgba(255, 0, 250, 0)',
+			'rgba(255, 0, 225, 1)',
+			'rgba(255, 0, 200, 1)',
+			'rgba(255, 0, 175, 1)',
+			'rgba(255, 0, 150, 1)',
+			'rgba(255, 0, 125, 1)',
+			'rgba(255, 0, 100, 1)',
+			'rgba(255, 0, 75, 1)',
+			'rgba(255, 0, 50, 1)',
+			'rgba(255, 0, 25, 1)',
 			'rgba(255, 0, 0, 1)'
 		      ]
 	});
