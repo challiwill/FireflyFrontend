@@ -32,14 +32,20 @@ Template.map.rendered = function () {
 
 	heatmap.setMap(gmaps.map);
     });
-
 };
 
-// // Not worrying about personal location yet
-// var geo = Geolocation.latLng();
-// new google.maps.LatLng(geo.lat, geo.lng)
-// var infowindow = new google.maps.InfoWindow({
-//     map: gmap,
-//     position: geo,
-//     content: 'Location found using HTML5.'
-// });
+Tracker.autorun(function () {
+    console.log("[+] Plotting personal position...");
+    var myGeo = Geolocation.latLng();
+    if (myGeo && gmaps.map) {
+	console.log("[-] my position is: " + myGeo.lat + ', ' + myGeo.lng);
+	myGeo = new google.maps.LatLng(myGeo.lat, myGeo.lng);
+	var marker = new google.maps.Marker({
+	    position: myGeo,
+	    map: gmaps.map,
+	    title: 'Here I am.'
+	});
+    } else {
+	console.log("[-] Cannot track position.");
+    }
+});

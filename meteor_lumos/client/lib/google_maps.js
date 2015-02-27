@@ -1,4 +1,4 @@
-// code from http://www.andrehonsberg.com/article/reactive-google-maps-markers-meteor-js
+// some code from http://www.andrehonsberg.com/article/reactive-google-maps-markers-meteor-js
 
 gmaps = {
     // map object
@@ -60,7 +60,7 @@ gmaps = {
             document.getElementById('map'),
             mapOptions
         );
-	
+
         // global flag saying we intialized already
         Session.set('map', true);
     }
