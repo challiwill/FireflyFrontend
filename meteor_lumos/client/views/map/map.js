@@ -40,10 +40,12 @@ Tracker.autorun(function () {
     if (myGeo && gmaps.map) {
 	console.log("[-] my position is: " + myGeo.lat + ', ' + myGeo.lng);
 	myGeo = new google.maps.LatLng(myGeo.lat, myGeo.lng);
-	var marker = new google.maps.Marker({
+	// TODO make better icon
+	var myIcon = '/images/myIcon.gif';
+	var myMarker = new google.maps.Marker({
 	    position: myGeo,
 	    map: gmaps.map,
-	    title: 'Here I am.'
+	    icon: myIcon
 	});
     } else {
 	console.log("[-] Cannot track position.");

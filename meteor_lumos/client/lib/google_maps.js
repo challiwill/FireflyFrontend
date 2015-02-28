@@ -50,6 +50,8 @@ gmaps = {
     // intialize the map
     initialize: function() {
         console.log("[+] Intializing Google Maps...");
+
+	// TODO get map to center on personal pos. Might need to do outside of /lib
         var mapOptions = {
             zoom: 15,
             center: new google.maps.LatLng(37.869929, -122.265146),
