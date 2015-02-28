@@ -1,10 +1,9 @@
 Meteor.publish('friends', function() {
-    return Meteor.users.find({friends: {$in: [this.userId]}});
+    return Profiles.find({friends: {$in: [this.userId]}});
 });
 
-Meteor.publish('userData', function () {
-    return Meteor.users.find({_id: this.userId},
-			     {fields: {'friends': true, 'profile': true}});
+Meteor.publish('profile', function() {
+    return Profiles.find({_id: this.userId});
 });
 
 Meteor.publish('crimes', function() {

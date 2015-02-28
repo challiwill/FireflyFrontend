@@ -2,16 +2,16 @@ Template.map.rendered = function () {
     if (! Session.get('map'))
     	gmaps.initialize();
 
-    Deps.autorun(function() {
+    Tracker.autorun(function() {
         console.log("[+] Intializing Heatmap...");
 	var crimeMap = new Array();
 
 	Crimes.find().forEach(function(incident) {
-            crimeMap.push(new google.maps.LatLng(incident.lat, incident.lng));
+	    crimeMap.push(new google.maps.LatLng(incident.lat, incident.lng));
 	});
 
 	heatmap = new google.maps.visualization.HeatmapLayer({
-            data: crimeMap,
+	    data: crimeMap,
 	    radius: 30,
 	    dissipating: true,
 	    opacity: 0.75,
@@ -35,19 +35,23 @@ Template.map.rendered = function () {
 };
 
 Tracker.autorun(function () {
+    // TODO only show nearby friends?
     console.log("[+] Plotting personal position...");
+    // TODO move this so that it is always updating 
+    //      position even when not on this page
     var myGeo = Geolocation.latLng();
-    if (myGeo && gmaps.map) {
+    if (myGeo && gmaps.map && Meteor.user()) {
 	console.log("[-] my position is: " + myGeo.lat + ', ' + myGeo.lng);
 	myGeo = new google.maps.LatLng(myGeo.lat, myGeo.lng);
-	// TODO make better icon
+	// TODO make better personal icon
+	// TODO make sure that marker does not get placed multiple times
 	var myIcon = '/images/myIcon.gif';
 	var myMarker = new google.maps.Marker({
 	    position: myGeo,
 	    map: gmaps.map,
-	    icon: myIcon
+	    icon: myIcon,
 	});
     } else {
-	console.log("[-] Cannot track position.");
+	console.log("[-] Cannot track my position.");
     }
 });
