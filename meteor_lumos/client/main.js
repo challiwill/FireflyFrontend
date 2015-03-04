@@ -25,8 +25,7 @@ Tracker.autorun(function () {
 			+ fLat + ', ' + fLng);
 	    fGeo = new google.maps.LatLng(fLat, fLng);
     
-	    // TODO make friend.name
-	    var contentString = friend._id;
+	    var contentString = "<strong>"+friend.name+"</strong>"+"<br>"+friend.phone;
 	    var infowindow = new google.maps.InfoWindow({
 		content: contentString
 	    });
@@ -38,8 +37,7 @@ Tracker.autorun(function () {
 		position: fGeo,
 		map: gmaps.map,
 		icon: friendIcon,
-		// TODO make friend.name
-		title: friend._id,
+		title: friend.name,
 	    });
 
 	    google.maps.event.addListener(friendMarker, 'click', function() {
