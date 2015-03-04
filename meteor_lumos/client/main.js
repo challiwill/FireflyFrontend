@@ -24,13 +24,26 @@ Tracker.autorun(function () {
 	    console.log("[-] friend's position is: " 
 			+ fLat + ', ' + fLng);
 	    fGeo = new google.maps.LatLng(fLat, fLng);
+    
+	    // TODO make friend.name
+	    var contentString = friend._id;
+	    var infowindow = new google.maps.InfoWindow({
+		content: contentString
+	    });
+
 	    // TODO make better friend icon
-	    var myIcon = '/images/friendIcon.gif';
+	    var friendIcon = '/images/friendIcon.gif';
 	    // TODO make sure that markers do not get placed multiple times
-	    var myMarker = new google.maps.Marker({
+	    var friendMarker = new google.maps.Marker({
 		position: fGeo,
 		map: gmaps.map,
-		icon: myIcon
+		icon: friendIcon,
+		// TODO make friend.name
+		title: friend._id,
+	    });
+
+	    google.maps.event.addListener(friendMarker, 'click', function() {
+		infowindow.open(gmaps.map,friendMarker);
 	    });
 	} else {
 	    console.log("[-] Cannot track friend's position.");
